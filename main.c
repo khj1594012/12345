@@ -2,40 +2,30 @@
 
 int main(){
 
-	//1.새로운 학생 목록 생성 2.이미있는파일열기
 	int select;
 
-	printf("1.새로운 파일 생성  2. 파일 열기 3. 종료\n");
-
 	while(1) {
+
+		printf("1.make new file 2.open a file 3.revise file 4. exit\n");
 		scanf("%d", &select);
 
 		if(select == 1){
-
-			//헤더 만들기 main.h
-			//함수분리 : 파일 하나 더 만듬 newfile.c : 파일이름입력받고 빈파일생성
-
-
+			newfile();
 		}
 
 		else if(select == 2){
-
-
-
+			fileopen();
 		}
-
 		else if(select == 3){
-
-			printf("종료\n");
-			break;
+			filerevision();
 		}
-
+		else if(select == 4){
+			exit(0);
+		}
 		else
-			printf("잘못입력\n");
+			printf("잘못 입력\n");
 
 	}
-
-
 	getch();
 
 	return 0;
