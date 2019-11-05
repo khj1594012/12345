@@ -1,5 +1,4 @@
-#include<stdio.h>
-#include<windows.h>
+#include "main.h"
 
 int main(){
 
@@ -13,6 +12,8 @@ int main(){
 
 		if(select == 1){
 
+			//헤더 만들기 main.h
+			//함수분리 : 파일 하나 더 만듬 newfile.c : 파일이름입력받고 빈파일생성
 
 
 		}
