@@ -2,29 +2,44 @@
 
 void newfile(){
 
-	char filename[30];
-	struct sInfo *newstudent = malloc(sizeof(struct sInfo));
+    char filename[30];
+    int num;
+    struct sInfo *newstudent;
 
-	printf("enter a new file name : ");
-	scanf("%s", filename);
 
-	FILE *fp = fopen(filename,"w");
+    printf("enter a new file name : ");
+    scanf("%s", filename);
 
-	if(filename != NULL){
-		printf("\nstudent name : ");
-		scanf(" %s", newstudent->name);
-		printf("\nstudent number : ");
-		scanf(" %s", newstudent->sNum);
-		printf("\ndepartment : ");
-		scanf(" %s", newstudent->dep);
+    //strcat / strlen
+    FILE *fp = fopen(filename,"w+");
 
-		//ÀÔ·Â ¹ÞÀº °É ÆÄÀÏ¿¡ ¾²±â..
-		fprintf(fp,"%s\n", newstudent->name);
-		fprintf(fp,"%s\n", newstudent->sNum);
-		fprintf(fp,"%s\n", newstudent->dep);
-	}
+    printf("enter a number of student : ");
+    scanf("%d", &num);
 
-	else
-		printf("file does not exist \n");
-	fclose(fp);
+    newstudent = (struct sInfo*)malloc(sizeof(struct sInfo)*num);
+
+
+    if(fp != NULL){
+
+        fprintf(fp,"%d\n",num);
+
+        for(int i = 0 ; i < num ; i++){
+            printf("\n%d student name : ", i+1);
+            scanf(" %s", (newstudent+i) -> name);
+            printf("\n%d student number : ", i+1);
+            scanf(" %s", (newstudent+i) -> sNum);
+            printf("\n%d department : ", i+1);
+            scanf(" %s", (newstudent+i) -> dep);
+
+            //Ã€Ã”Â·Ã‚ Â¹ÃžÃ€Âº Â°Ã‰ Ã†Ã„Ã€ÃÂ¿Â¡ Â¾Â²Â±Ã¢..
+            fprintf(fp,"%s\n", (newstudent+i) -> name);
+            fprintf(fp,"%s\n", (newstudent+i) -> sNum);
+            fprintf(fp,"%s\n", (newstudent+i) -> dep);
+        }
+
+    }
+    else
+        printf("file does not exist \n");
+
+    fclose(fp);
 }
