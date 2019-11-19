@@ -8,7 +8,7 @@ int main(){
 
 	while(1) {
 
-		printf("1.make new file 2.open a file 3.exit\n");
+		printf("===menu===\n1.make new file 2.open a file 3.exit\n");
 		scanf("%d", &select);
 
 		if(select == 1){
@@ -19,7 +19,7 @@ int main(){
             printf("enter a file name to open : ");
             scanf("%s", openfile);
 
-            fp = fopen(openfile, "r+");
+            fp = fopen(strcat(openfile, ".txt"), "r+");
             if(fp != NULL){
                 fileopen(fp);
                 fclose(fp);

@@ -11,11 +11,12 @@ void newfile(){
     scanf("%s", filename);
 
     //strcat / strlen
-    FILE *fp = fopen(filename,"w+");
+    //입력받은 이름으로 파일생성 >> .txt파일로 만들기 위해 strcat 함수 사용
+    FILE *fp = fopen(strcat(filename, ".txt"),"w+");
 
     printf("enter a number of student : ");
     scanf("%d", &num);
-
+    //sInfo타입의 구조체 동적할당, 학생 수만큼 곱해줌
     newstudent = (struct sInfo*)malloc(sizeof(struct sInfo)*num);
 
 
@@ -31,7 +32,7 @@ void newfile(){
             printf("\n%d department : ", i+1);
             scanf(" %s", (newstudent+i) -> dep);
 
-            //ÀÔ·Â ¹ÞÀº °É ÆÄÀÏ¿¡ ¾²±â..
+            //newstudent[i]를 포인터로 표현
             fprintf(fp,"%s\n", (newstudent+i) -> name);
             fprintf(fp,"%s\n", (newstudent+i) -> sNum);
             fprintf(fp,"%s\n", (newstudent+i) -> dep);

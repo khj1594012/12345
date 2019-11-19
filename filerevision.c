@@ -3,17 +3,19 @@
 void filerevision(FILE *fp){
 
     char refilename[50];
-    int num = 0;
-    struct sInfo *restudent = malloc(sizeof(struct sInfo));
+    int num;
 
-    fscanf(fp,"%d", &num);
+	printf("몇개..수정.");
+	scanf("%d", &num);
 
-    restudent = (struct sInfo*)malloc(sizeof(struct sInfo)*num);
+    struct sInfo *restudent = (struct sInfo*)malloc(sizeof(struct sInfo)*num);
 
 	    if(fp != NULL){
-	    	rewind(fp);
 
-	        fprintf(fp,"%d\n",num);
+			rewind(fp); //맨위로
+	        //fprintf(fp,"%d\n", num);
+
+			fseek(fp,sizeof(char)*2,SEEK_CUR);
 
 	        for(int i = 0 ; i < num ; i++){
 	            printf("\n%d student name : ", i+1);
@@ -23,7 +25,6 @@ void filerevision(FILE *fp){
 	            printf("\n%d department : ", i+1);
 	            scanf(" %s", (restudent+i) -> dep);
 
-	            //ÀÔ·Â ¹ÞÀº °É ÆÄÀÏ¿¡ ¾²±â..
 	            fprintf(fp,"%s\n", (restudent+i) -> name);
 	            fprintf(fp,"%s\n", (restudent+i) -> sNum);
 	            fprintf(fp,"%s\n", (restudent+i) -> dep);
@@ -33,5 +34,6 @@ void filerevision(FILE *fp){
 	    else
 	        printf("file does not exist \n");
 
+	    free(restudent);
 }
 
